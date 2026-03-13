@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Security Assessment &amp; Mitigation Plan — Zava Corp</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS Play CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'brand-black': '#212129',
+            'brand-grey': '#E7E7E7',
+            'brand-gold': '#9D833E',
+            'brand-blue': '#16ABE0',
+            'brand-pink': '#D93D7A',
+            'brand-turquoise': '#00B0A3',
+          },
+          fontFamily: {
+            heading: ['"Libre Baskerville"', 'serif'],
+            body: ['"Montserrat"', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body class="font-body antialiased">
+
+  <!-- FINAL Ribbon -->
+  <div class="draft-ribbon" aria-label="Final">
+    <span>FINAL</span>
+  </div>
+
+  <!-- ============================================================
+       NAVIGATION
+       ============================================================ -->
+  <nav class="main-nav fixed top-0 inset-x-0 z-50 bg-transparent">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2.5">
+        <img src="assets/microsoft-logo.svg" alt="Microsoft" class="h-6 w-auto" />
+        <span class="text-sm font-semibold tracking-tight">Microsoft</span>
+      </a>
+      <div class="flex items-center gap-6 nav-links-container text-xs tracking-wide uppercase">
+        <a href="#introduction" class="nav-link hover:text-brand-gold">Introduction</a>
+        <a href="#approach" class="nav-link hover:text-brand-gold">Our Approach</a>
+        <a href="#risks" class="nav-link hover:text-brand-gold">Risks</a>
+        <a href="#assessment" class="nav-link hover:text-brand-gold">Assessment</a>
+        <a href="#recommendations" class="nav-link hover:text-brand-gold">Recommendations</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       HERO SECTION
+       ============================================================ -->
+  <section class="hero-section relative min-h-[92vh] flex items-center justify-center">
+
+    <!-- Background layers -->
+    <div class="hero-aurora"></div>
+    <div class="hero-vignette"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-particles"></div>
+
+    <!-- Content -->
+    <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+
+      <!-- Logo -->
+      <div class="hero-fade hero-fade-1 flex justify-center mb-10">
+        <img src="assets/ZavaLogo.png" alt="Zava Corp" class="h-28 sm:h-36 w-auto" />
+      </div>
+
+      <!-- Status badge -->
+      <div class="hero-fade hero-fade-2 flex justify-center mb-8">
+        <div class="hero-badge text-brand-gold text-[0.65rem] tracking-widest uppercase font-semibold">
+          <span class="hero-badge-dot"></span>
+          M365 Copilot &amp; Agents Program
+        </div>
+      </div>
+
+      <!-- Title -->
+      <h1 class="hero-fade hero-fade-3 font-heading text-brand-black text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
+        Data Security Assessment<br class="hidden sm:inline" />
+        <span class="text-brand-gold">&amp; Mitigation Plan</span>
+      </h1>
+
+      <!-- Accent line -->
+      <div class="hero-fade hero-fade-4 flex justify-center mt-6 mb-5">
+        <div class="hero-accent-line"></div>
+      </div>
+
+      <!-- Subtitle -->
+      <p class="hero-fade hero-fade-5 font-body text-brand-black/50 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+        Addressing and preventing Microsoft 365 data oversharing risks
+      </p>
+
+      <!-- Authors & Date -->
+      <div class="hero-fade hero-fade-5 mt-10">
+        <div class="hero-authors">
+          <!-- Author 1 -->
+          <div class="hero-author">
+            <div class="hero-avatar">
+              <img src="assets/Anis.jpg" alt="Anis Houaidia" />
+            </div>
+            <div class="hero-author-info">
+              <span class="hero-author-name">Anis HOUAIDIA</span>
+              <span class="hero-author-role">Cybersecurity Architect</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Date -->
+        <div class="hero-date">
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+          </svg>
+          March 2026
+        </div>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="hero-fade hero-fade-6 mt-16">
+        <div class="scroll-indicator inline-flex flex-col items-center text-brand-black/20 text-[0.6rem] tracking-widest uppercase gap-2">
+          <span>Scroll</span>
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       INTRODUCTION
+       ============================================================ -->
+  <section id="introduction" class="introduction-section py-24 bg-brand-black">
+    <div class="max-w-6xl mx-auto px-6">
+
+      <!-- Section header -->
+      <div class="reveal mb-12">
+        <div class="section-accent mb-4"></div>
+        <h2 class="font-heading text-3xl sm:text-4xl font-bold text-white">
+          Introduction
+        </h2>
+      </div>
+
+      <!-- Full-width image -->
+      <div class="reveal w-full">
+        <img src="assets/Oversharing.png" alt="Oversharing" class="w-full h-auto rounded-2xl shadow-2xl" />
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       OUR APPROACH
+       ============================================================ -->
+  <section id="approach" class="approach-section py-24 bg-brand-black">
+    <div class="max-w-6xl mx-auto px-6">
+
+      <!-- Section header -->
+      <div class="reveal mb-16">
+        <div class="section-accent mb-4"></div>
+        <h2 class="font-heading text-3xl sm:text-4xl font-bold text-white">
+          Our Approach
+        </h2>
+        <p class="mt-3 text-sm text-white/50 max-w-xl leading-relaxed">
+          A structured approach comprised of processes, policies, tools, and guidelines designed to identify, assess, and address instances of excessive or inappropriate sharing of files, folders, and resources within Microsoft 365 environments (e.g., Microsoft SharePoint Online, OneDrive for Business, Teams).
+        </p>
+      </div>
+
+      <!-- Process Steps -->
+      <div class="reveal-stagger approach-timeline relative pl-12 sm:pl-16 space-y-10">
+
+        <!-- Vertical timeline line -->
+        <div class="absolute left-[1.15rem] sm:left-[1.4rem] top-2 bottom-2 w-px bg-gradient-to-b from-brand-gold/80 via-brand-gold/30 to-transparent"></div>
+
+        <!-- Step 1 -->
+        <div class="approach-step relative group">
+          <div class="absolute -left-12 sm:-left-16 top-0 flex items-center justify-center w-9 h-9 rounded-full border-2 border-brand-gold bg-brand-black text-brand-gold font-bold text-sm shadow-lg shadow-brand-gold/20 group-hover:bg-brand-gold group-hover:text-brand-black transition-all duration-300">1</div>
+          <div class="approach-card rounded-xl border border-white/10 bg-white/[0.03] backdrop-blur-md p-6 hover:border-brand-gold/40 transition-all duration-300">
+            <h3 class="font-heading text-lg sm:text-xl font-bold text-white mb-4">Initiate data usage and permissions assessment</h3>
+            <ol class="space-y-2 text-sm text-white/60 leading-relaxed list-decimal list-inside">
+              <li>Export the top 100 most used sites from SPO admin center</li>
+              <li>Run SAM permission state report</li>
+              <li>Run the Purview DSPM for AI Data assessments to gain visibility into all data at risk of Copilot access, pivoted on labels and sensitive information types</li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="approach-step relative group">
+          <div class="absolute -left-12 sm:-left-16 top-0 flex items-center justify-center w-9 h-9 rounded-full border-2 border-brand-gold bg-brand-black text-brand-gold font-bold text-sm shadow-lg shadow-brand-gold/20 group-hover:bg-brand-gold group-hover:text-brand-black transition-all duration-300">2</div>
+          <div class="approach-card rounded-xl border border-white/10 bg-white/[0.03] backdrop-blur-md p-6 hover:border-brand-gold/40 transition-all duration-300">
+            <h3 class="font-heading text-lg sm:text-xl font-bold text-white mb-4">Turn ON proactive auditing</h3>
+            <ol class="space-y-2 text-sm text-white/60 leading-relaxed list-decimal list-inside">
+              <li>Turn on Purview Audit and view Copilot interaction activity reports and charts</li>
+              <li>Turn on proactive analysis for sensitive data handling with prompts and responses with Purview Communications Compliance</li>
+              <li>Turn on oversharing SPO Purview DLP policy in simulation mode to detect anyone sharing links for labeled and unlabeled data</li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="approach-step relative group">
+          <div class="absolute -left-12 sm:-left-16 top-0 flex items-center justify-center w-9 h-9 rounded-full border-2 border-brand-gold bg-brand-black text-brand-gold font-bold text-sm shadow-lg shadow-brand-gold/20 group-hover:bg-brand-gold group-hover:text-brand-black transition-all duration-300">3</div>
+          <div class="approach-card rounded-xl border border-white/10 bg-white/[0.03] backdrop-blur-md p-6 hover:border-brand-gold/40 transition-all duration-300">
+            <h3 class="font-heading text-lg sm:text-xl font-bold text-white mb-4">Review Office 365 settings</h3>
+            <ol class="space-y-2 text-sm text-white/60 leading-relaxed list-decimal list-inside">
+              <li>Review SharePoint sharing settings</li>
+              <li>Review Sharing Link Default settings</li>
+              <li>Review Teams sharing settings</li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="approach-step relative group">
+          <div class="absolute -left-12 sm:-left-16 top-0 flex items-center justify-center w-9 h-9 rounded-full border-2 border-brand-gold bg-brand-black text-brand-gold font-bold text-sm shadow-lg shadow-brand-gold/20 group-hover:bg-brand-gold group-hover:text-brand-black transition-all duration-300">4</div>
+          <div class="approach-card rounded-xl border border-white/10 bg-white/[0.03] backdrop-blur-md p-6 hover:border-brand-gold/40 transition-all duration-300">
+            <h3 class="font-heading text-lg sm:text-xl font-bold text-white mb-4">Discover oversharing risks</h3>
+            <ol class="space-y-2 text-sm text-white/60 leading-relaxed list-decimal list-inside">
+              <li>Use DAG permission state report with SITs to flag sites and files that are potentially overshared</li>
+              <li>Identify Copilot agent insights</li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="approach-step relative group">
+          <div class="absolute -left-12 sm:-left-16 top-0 flex items-center justify-center w-9 h-9 rounded-full border-2 border-brand-gold bg-brand-black text-brand-gold font-bold text-sm shadow-lg shadow-brand-gold/20 group-hover:bg-brand-gold group-hover:text-brand-black transition-all duration-300">5</div>
+          <div class="approach-card rounded-xl border border-white/10 bg-white/[0.03] backdrop-blur-md p-6 hover:border-brand-gold/40 transition-all duration-300">
+            <h3 class="font-heading text-lg sm:text-xl font-bold text-white mb-4">Aggregate and analyze data</h3>
+            <ol class="space-y-2 text-sm text-white/60 leading-relaxed list-decimal list-inside">
+              <li>Aggregate all generated reports and map data</li>
+              <li>Analyze insights and generate KPIs</li>
+              <li>Identify potential risks and map with KPIs</li>
+              <li>Define recommendations for mitigating risks</li>
+              <li>Generate summary report</li>
+            </ol>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 1 — OVERSHARING RISKS
+       ============================================================ -->
+  <section id="risks" class="risks-section py-24">
+    <div class="max-w-6xl mx-auto px-6">
+
+      <!-- Section header -->
+      <div class="reveal mb-16">
+        <div class="section-accent mb-4"></div>
+        <h2 class="font-heading text-3xl sm:text-4xl font-bold text-white">
+          Oversharing Risks
+        </h2>
+        <p class="mt-3 text-sm text-white/50 max-w-xl leading-relaxed">
+          Five identified risk areas across your Microsoft 365 tenant, ranked by severity and business impact.
+        </p>
+      </div>
+
+      <!-- Risk Cards — ordered by severity: Critical → High → Medium -->
+      <div class="reveal-stagger space-y-4">
+
+        <!-- #1 — Critical: Membership & Permissions -->
+        <div class="risk-card reveal" data-severity="critical">
+          <button class="risk-card-header w-full flex items-center gap-4 px-5 py-4 text-left cursor-pointer focus:outline-none"
+                  role="button" aria-expanded="false" tabindex="0">
+            <div class="risk-avatar">
+              <img src="assets/risk-1-permissions.png" alt="" loading="lazy" />
+              <span class="risk-avatar-badge" style="background: var(--severity-critical);">1</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex flex-wrap items-center gap-2 mb-0.5">
+                <h3 class="font-heading text-sm sm:text-base font-bold text-white leading-snug">
+                  Membership, Permissions &amp; Site-Level Controls
+                </h3>
+                <span class="severity-badge severity-badge-critical">Critical</span>
+              </div>
+              <p class="text-xs text-white/40 mt-0.5 line-clamp-1">
+                Site membership broader than intended; Copilot ingesting content from incorrect containers.
+              </p>
+            </div>
+            <svg class="risk-chevron w-5 h-5 text-white/30 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div class="risk-detail" role="region">
+            <div class="risk-detail-inner" data-severity="critical">
+              <div class="risk-detail-layout">
+                <div class="risk-detail-text">
+                  <p class="text-sm leading-relaxed text-white/70">
+                    SharePoint site memberships are broader than they should be, granting unintended users access to sensitive containers. Microsoft 365 Copilot indexes content from these over-permissioned sites, exposing confidential information through AI-generated responses. This represents the highest-impact risk because it combines <strong>permissioning failures</strong> with <strong>AI amplification</strong>.
+                  </p>
+                  <ul class="mt-3 space-y-1.5 text-sm text-white/60">
+                    <li class="flex gap-2"><span class="text-brand-pink font-bold">→</span> Review and tighten site membership across all sensitive SharePoint sites</li>
+                    <li class="flex gap-2"><span class="text-brand-pink font-bold">→</span> Audit Copilot content source configuration and restrict ingestion scope</li>
+                    <li class="flex gap-2"><span class="text-brand-pink font-bold">→</span> Implement access reviews with quarterly cadence for critical sites</li>
+                  </ul>
+                </div>
+                <div class="risk-detail-illustration">
+                  <img src="assets/risk-1-permissions.png" alt="Illustration: overwhelmed character juggling too many keys and locks" loading="lazy" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- #2 — Critical: Content Leakage -->
+        <div class="risk-card reveal" data-severity="critical">
+          <button class="risk-card-header w-full flex items-center gap-4 px-5 py-4 text-left cursor-pointer focus:outline-none"
+                  role="button" aria-expanded="false" tabindex="0">
+            <div class="risk-avatar">
+              <img src="assets/risk-5-leakage.png" alt="" loading="lazy" />
+              <span class="risk-avatar-badge" style="background: var(--severity-critical);">2</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex flex-wrap items-center gap-2 mb-0.5">
+                <h3 class="font-heading text-sm sm:text-base font-bold text-white leading-snug">
+                  Content Leakage from Highly Sensitive Sites
+                </h3>
+                <span class="severity-badge severity-badge-critical">Critical</span>
+              </div>
+              <p class="text-xs text-white/40 mt-0.5 line-clamp-1">
+                Inadvertent exposure through sharing actions, cross-site references, and missing DLP controls.
+              </p>
+            </div>
+            <svg class="risk-chevron w-5 h-5 text-white/30 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div class="risk-detail" role="region">
+            <div class="risk-detail-inner" data-severity="critical">
+              <div class="risk-detail-layout">
+                <div class="risk-detail-text">
+                  <p class="text-sm leading-relaxed text-white/70">
+                    Content from the most sensitive sites—legal, M&amp;A, executive strategy—is leaking through a combination of inadvertent sharing actions, cross-site references embedded in documents, and the absence of robust DLP policies. Without <strong>sensitivity labels</strong>, <strong>Conditional Access policies</strong>, and proper <strong>data loss prevention rules</strong>, these sites have no effective last line of defense against unintended exposure.
+                  </p>
+                  <ul class="mt-3 space-y-1.5 text-sm text-white/60">
+                    <li class="flex gap-2"><span class="text-brand-pink font-bold">→</span> Deploy mandatory sensitivity labels on all highly-sensitive sites</li>
+                    <li class="flex gap-2"><span class="text-brand-pink font-bold">→</span> Implement DLP policies blocking external sharing of labeled content</li>
+                    <li class="flex gap-2"><span class="text-brand-pink font-bold">→</span> Enable Conditional Access: compliant devices only for sensitive content</li>
+                    <li class="flex gap-2"><span class="text-brand-pink font-bold">→</span> Audit cross-site content references and embedded link exposure</li>
+                  </ul>
+                </div>
+                <div class="risk-detail-illustration">
+                  <img src="assets/risk-5-leakage.png" alt="Illustration: panicked character as documents leak from vault" loading="lazy" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- #3 — High: Misplaced Content -->
+        <div class="risk-card reveal" data-severity="high">
+          <button class="risk-card-header w-full flex items-center gap-4 px-5 py-4 text-left cursor-pointer focus:outline-none"
+                  role="button" aria-expanded="false" tabindex="0">
+            <div class="risk-avatar">
+              <img src="assets/risk-2-mislabeled.png" alt="" loading="lazy" />
+              <span class="risk-avatar-badge" style="background: var(--severity-high);">3</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex flex-wrap items-center gap-2 mb-0.5">
+                <h3 class="font-heading text-sm sm:text-base font-bold text-white leading-snug">
+                  Misplaced, Mislabeled or Overshared Site Content
+                </h3>
+                <span class="severity-badge severity-badge-high">High</span>
+              </div>
+              <p class="text-xs text-white/40 mt-0.5 line-clamp-1">
+                Content stored in the wrong location; highly-confidential data on confidential-only sites.
+              </p>
+            </div>
+            <svg class="risk-chevron w-5 h-5 text-white/30 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div class="risk-detail" role="region">
+            <div class="risk-detail-inner" data-severity="high">
+              <div class="risk-detail-layout">
+                <div class="risk-detail-text">
+                  <p class="text-sm leading-relaxed text-white/70">
+                    Documents are being stored in sites whose classification does not match the sensitivity of the content. Highly-confidential materials are found on sites labeled merely "Confidential," widening the audience well beyond the intended scope. This mismatch between <strong>content sensitivity</strong> and <strong>container classification</strong> creates persistent data leakage paths.
+                  </p>
+                  <ul class="mt-3 space-y-1.5 text-sm text-white/60">
+                    <li class="flex gap-2"><span class="text-brand-gold font-bold">→</span> Deploy sensitivity labels with auto-classification policies</li>
+                    <li class="flex gap-2"><span class="text-brand-gold font-bold">→</span> Audit high-sensitivity content placement across all sites</li>
+                    <li class="flex gap-2"><span class="text-brand-gold font-bold">→</span> Enable container-level label enforcement in SharePoint</li>
+                  </ul>
+                </div>
+                <div class="risk-detail-illustration">
+                  <img src="assets/risk-2-mislabeled.png" alt="Illustration: confused character placing folders in wrong cabinet" loading="lazy" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- #4 — High: Link Governance -->
+        <div class="risk-card reveal" data-severity="high">
+          <button class="risk-card-header w-full flex items-center gap-4 px-5 py-4 text-left cursor-pointer focus:outline-none"
+                  role="button" aria-expanded="false" tabindex="0">
+            <div class="risk-avatar">
+              <img src="assets/risk-4-links.png" alt="" loading="lazy" />
+              <span class="risk-avatar-badge" style="background: var(--severity-high);">4</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex flex-wrap items-center gap-2 mb-0.5">
+                <h3 class="font-heading text-sm sm:text-base font-bold text-white leading-snug">
+                  Insufficient Link Governance &amp; Practices
+                </h3>
+                <span class="severity-badge severity-badge-high">High</span>
+              </div>
+              <p class="text-xs text-white/40 mt-0.5 line-clamp-1">
+                Overly broad sharing links from OneDrive and SharePoint widen access beyond intent.
+              </p>
+            </div>
+            <svg class="risk-chevron w-5 h-5 text-white/30 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div class="risk-detail" role="region">
+            <div class="risk-detail-inner" data-severity="high">
+              <div class="risk-detail-layout">
+                <div class="risk-detail-text">
+                  <p class="text-sm leading-relaxed text-white/70">
+                    Users frequently share content via "Anyone with the link" or organization-wide links when more restrictive options should be used. These overly broad sharing links persist indefinitely and bypass site-level access controls, creating <strong>untracked lateral access paths</strong> throughout the tenant. OneDrive personal shares compound the risk by operating outside team governance structures.
+                  </p>
+                  <ul class="mt-3 space-y-1.5 text-sm text-white/60">
+                    <li class="flex gap-2"><span class="text-brand-gold font-bold">→</span> Restrict default sharing link type to "Specific people" tenant-wide</li>
+                    <li class="flex gap-2"><span class="text-brand-gold font-bold">→</span> Set expiration policies on all sharing links (30/90 day maximum)</li>
+                    <li class="flex gap-2"><span class="text-brand-gold font-bold">→</span> Audit and revoke existing organization-wide and anonymous links</li>
+                  </ul>
+                </div>
+                <div class="risk-detail-illustration">
+                  <img src="assets/risk-4-links.png" alt="Illustration: alarmed character with sharing links spreading everywhere" loading="lazy" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- #5 — Medium: Stale Content -->
+        <div class="risk-card reveal" data-severity="medium">
+          <button class="risk-card-header w-full flex items-center gap-4 px-5 py-4 text-left cursor-pointer focus:outline-none"
+                  role="button" aria-expanded="false" tabindex="0">
+            <div class="risk-avatar">
+              <img src="assets/risk-3-stale.png" alt="" loading="lazy" />
+              <span class="risk-avatar-badge" style="background: var(--severity-medium);">5</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex flex-wrap items-center gap-2 mb-0.5">
+                <h3 class="font-heading text-sm sm:text-base font-bold text-white leading-snug">
+                  Stale / Unused Content Surfacing
+                </h3>
+                <span class="severity-badge severity-badge-medium">Medium</span>
+              </div>
+              <p class="text-xs text-white/40 mt-0.5 line-clamp-1">
+                Unmanaged legacy content being ingested by the Semantic Index used by Copilot.
+              </p>
+            </div>
+            <svg class="risk-chevron w-5 h-5 text-white/30 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div class="risk-detail" role="region">
+            <div class="risk-detail-inner" data-severity="medium">
+              <div class="risk-detail-layout">
+                <div class="risk-detail-text">
+                  <p class="text-sm leading-relaxed text-white/70">
+                    Legacy documents and outdated content remain accessible and are being indexed by the Microsoft 365 Semantic Index. Copilot surfaces this stale information as if it were current, leading to <strong>misleading AI responses</strong> and potential decision-making based on outdated data. The volume of unmanaged content increases the noise-to-signal ratio significantly.
+                  </p>
+                  <ul class="mt-3 space-y-1.5 text-sm text-white/60">
+                    <li class="flex gap-2"><span class="text-brand-blue font-bold">→</span> Implement content lifecycle policies with automatic archival</li>
+                    <li class="flex gap-2"><span class="text-brand-blue font-bold">→</span> Run content age analysis and flag sites with >70% stale content</li>
+                    <li class="flex gap-2"><span class="text-brand-blue font-bold">→</span> Configure Semantic Index exclusion rules for archived sites</li>
+                  </ul>
+                </div>
+                <div class="risk-detail-illustration">
+                  <img src="assets/risk-3-stale.png" alt="Illustration: worried character pulling dusty old documents from cabinet" loading="lazy" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /reveal-stagger -->
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 2 — ASSESSMENT SUMMARY
+       ============================================================ -->
+  <section id="assessment" class="assessment-section py-24">
+    <div class="max-w-6xl mx-auto px-6">
+
+      <!-- Section header -->
+      <div class="reveal mb-16">
+        <div class="section-accent mb-4"></div>
+        <h2 class="font-heading text-3xl sm:text-4xl font-bold text-white">
+          Assessment Summary
+        </h2>
+        <p class="mt-3 text-sm text-white/50 max-w-xl leading-relaxed">
+          Key metrics and detailed findings from the data security posture assessment across your Microsoft 365 tenant.
+        </p>
+      </div>
+
+      <!-- ---- Sensitive Interactions Card ---- -->
+      <div class="reveal sensitive-interactions-card mb-6">
+
+        <!-- SIT Info Box -->
+        <div class="sit-info-box">
+          <div class="sit-info-box-header">
+            <div class="sit-info-icon-wrap">
+              <svg class="sit-info-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L3 7v5c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z" 
+                      stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M9 12l2 2 4-4" 
+                      stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <span class="sit-info-heading">Sensitive Information Types</span>
+          </div>
+          <div class="sit-info-content">
+            <ul class="sit-info-list">
+              <li><strong>400+ Sensitive Information Types</strong> have been defined and implemented</li>
+              <li>Both built-in and custom SITs are included</li>
+              <li>SITs cover wide range of PII, health, financial and legal areas</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="si-left">
+          <h3 class="si-title">Sensitive interactions per AI app</h3>
+          <p class="si-subtitle">Sensitive information types shared with Microsoft Copilot, agents, and other AI apps.</p>
+          <div class="si-donut-wrap">
+            <svg class="si-donut" viewBox="0 0 120 120">
+              <circle cx="60" cy="60" r="50" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="14"/>
+              <!-- All Full Names — orange — 88% -->
+              <circle cx="60" cy="60" r="50" fill="none" stroke="#C4692A" stroke-width="14"
+                stroke-dasharray="276.46 37.70" stroke-dashoffset="78.54" stroke-linecap="butt"/>
+              <!-- Other — purple — 5% -->
+              <circle cx="60" cy="60" r="50" fill="none" stroke="#8764B8" stroke-width="14"
+                stroke-dasharray="15.71 298.45" stroke-dashoffset="-197.92" stroke-linecap="butt"/>
+              <!-- IP Addresses — pink — 3% -->
+              <circle cx="60" cy="60" r="50" fill="none" stroke="#D93D7A" stroke-width="14"
+                stroke-dasharray="9.42 304.74" stroke-dashoffset="-213.63" stroke-linecap="butt"/>
+              <!-- Credit Cards — gold — 2% -->
+              <circle cx="60" cy="60" r="50" fill="none" stroke="#C4A852" stroke-width="14"
+                stroke-dasharray="6.28 307.88" stroke-dashoffset="-223.05" stroke-linecap="butt"/>
+              <!-- Physical Addresses — grey — 1.5% -->
+              <circle cx="60" cy="60" r="50" fill="none" stroke="#A0A0A0" stroke-width="14"
+                stroke-dasharray="4.71 309.45" stroke-dashoffset="-229.33" stroke-linecap="butt"/>
+              <!-- Phone Numbers — cyan — 0.5% -->
+              <circle cx="60" cy="60" r="50" fill="none" stroke="#16ABE0" stroke-width="14"
+                stroke-dasharray="1.57 312.59" stroke-dashoffset="-234.04" stroke-linecap="butt"/>
+            </svg>
+            <div class="si-donut-label">
+              <span class="si-donut-value">8.1M</span>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="si-right">
+          <!-- Microsoft 365 Copilot -->
+          <div class="si-bar-group">
+            <div class="si-bar-label">Microsoft 365 Copilot</div>
+            <div class="si-bar-row">
+              <div class="si-bar-track">
+                <div class="si-bar-segment" style="width:88%;background:#C4692A;" title="All Full Names"></div>
+                <div class="si-bar-segment" style="width:5%;background:#8764B8;" title="Other"></div>
+                <div class="si-bar-segment" style="width:3%;background:#D93D7A;" title="IP Addresses"></div>
+                <div class="si-bar-segment" style="width:2%;background:#C4A852;" title="Credit Cards"></div>
+                <div class="si-bar-segment" style="width:1.5%;background:#A0A0A0;" title="Physical Addresses"></div>
+                <div class="si-bar-segment" style="width:0.5%;background:#16ABE0;" title="Phone Numbers"></div>
+              </div>
+              <span class="si-bar-value">8.1M</span>
+            </div>
+          </div>
+
+          <!-- Copilot in Fabric -->
+          <div class="si-bar-group">
+            <div class="si-bar-label">Copilot in Fabric</div>
+            <div class="si-bar-row">
+              <div class="si-bar-track">
+                <div class="si-bar-segment" style="width:40%;background:#C4692A;" title="All Full Names"></div>
+                <div class="si-bar-segment" style="width:20%;background:#8764B8;" title="Other"></div>
+                <div class="si-bar-segment" style="width:15%;background:#D93D7A;" title="IP Addresses"></div>
+                <div class="si-bar-segment" style="width:10%;background:#C4A852;" title="Credit Cards"></div>
+              </div>
+              <span class="si-bar-value">522</span>
+            </div>
+          </div>
+
+          <!-- ChatGPT -->
+          <div class="si-bar-group">
+            <div class="si-bar-label">ChatGPT</div>
+            <div class="si-bar-row">
+              <div class="si-bar-track">
+                <div class="si-bar-segment" style="width:1%;background:#8764B8;" title="Other"></div>
+              </div>
+              <span class="si-bar-value">1</span>
+            </div>
+          </div>
+
+          <!-- Legend -->
+          <div class="si-legend">
+            <span class="si-legend-item"><span class="si-legend-dot" style="background:#C4692A;"></span>All Full Names</span>
+            <span class="si-legend-item"><span class="si-legend-dot" style="background:#8764B8;"></span>Other</span>
+            <span class="si-legend-item si-legend-more">4 more</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ---- KPI Dashboard — 9 Profile-style Flip Cards ---- -->
+      <div class="reveal grid grid-cols-2 md:grid-cols-3 gap-6 mb-20">
+
+        <!-- KPI 1 — Risk #1 Permissions (Critical) -->
+        <div class="kpi-card-wrapper">
+          <div class="kpi-risk-bar" style="background: var(--severity-critical);">
+            <span class="kpi-risk-bar-text">Risk #1 — Permissions</span>
+          </div>
+          <div class="kpi-flip-card" data-risk="critical">
+            <div class="kpi-flip-inner">
+              <div class="kpi-flip-front">
+                <div class="kpi-front-header">
+                  <div class="kpi-pulse-row">
+                    <span class="kpi-pulse-dot" style="background: var(--severity-critical);"></span>
+                    <span class="kpi-label">Items shared with EEEU</span>
+                  </div>
+                  <span class="kpi-number">①</span>
+                </div>
+                <div class="kpi-value-group">
+                  <div class="kpi-value-row">
+                    <div class="kpi-value">9,466</div>
+                    <span class="kpi-pct">0.012%</span>
+                  </div>
+                  <div class="kpi-source">of 78.9M files</div>
+                </div>
+              </div>
+              <div class="kpi-flip-back">
+                <div class="kpi-back-header">Potential Risk</div>
+                <p class="kpi-back-desc">EEEU means every internal user can access these files. This bypasses intended team boundaries and exposes internal-only content at enterprise scale.</p>
+                <div class="kpi-back-source">SharePoint Permission Report</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- KPI 2 — Risk #2 Content Leakage (Critical) -->
+        <div class="kpi-card-wrapper">
+          <div class="kpi-risk-bar" style="background: var(--severity-critical);">
+            <span class="kpi-risk-bar-text">Risk #2 — Content Leakage</span>
+          </div>
+          <div class="kpi-flip-card" data-risk="critical">
+            <div class="kpi-flip-inner">
+              <div class="kpi-flip-front">
+                <div class="kpi-front-header">
+                  <div class="kpi-pulse-row">
+                    <span class="kpi-pulse-dot" style="background: var(--severity-critical);"></span>
+                    <span class="kpi-label">Sensitive files accessed by &gt;10 users</span>
+                  </div>
+                  <span class="kpi-number">②</span>
+                </div>
+                <div class="kpi-value-group">
+                  <div class="kpi-value-row">
+                    <div class="kpi-value">823,832</div>
+                    <span class="kpi-pct">11%</span>
+                  </div>
+                  <div class="kpi-source">of all sensitive data</div>
+                </div>
+                <!-- Chart toggle icon -->
+                <button class="kpi-chart-toggle" data-chart-target="kpi2-chart-panel" aria-label="Toggle sensitive files distribution chart" title="View sensitive files distribution">
+                  <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="3" y="12" width="4" height="9" rx="1"/>
+                    <rect x="10" y="7" width="4" height="14" rx="1"/>
+                    <rect x="17" y="3" width="4" height="18" rx="1"/>
+                  </svg>
+                </button>
+              </div>
+              <div class="kpi-flip-back">
+                <div class="kpi-back-header">Potential Risk</div>
+                <p class="kpi-back-desc">Signals high-impact oversharing: sensitive info being accessed by large audiences, increasing risk of leakage, misuse, or accidental exposure.</p>
+                <div class="kpi-back-source">DSPM Oversharing Scan</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- KPI 3 — Risk #3 Mislabeled (High) -->
+        <div class="kpi-card-wrapper">
+          <div class="kpi-risk-bar" style="background: var(--severity-high);">
+            <span class="kpi-risk-bar-text">Risk #3 — Mislabeled Content</span>
+          </div>
+          <div class="kpi-flip-card" data-risk="high">
+            <div class="kpi-flip-inner">
+              <div class="kpi-flip-front">
+                <div class="kpi-front-header">
+                  <div class="kpi-pulse-row">
+                    <span class="kpi-pulse-dot" style="background: var(--severity-high);"></span>
+                    <span class="kpi-label">Non-classified containers</span>
+                  </div>
+                  <span class="kpi-number">③</span>
+                </div>
+                <div class="kpi-value-group">
+                  <div class="kpi-value-row">
+                    <div class="kpi-value">171,975</div>
+                    <span class="kpi-pct">100%</span>
+                  </div>
+                  <div class="kpi-source">of SPO / OneDrive estate</div>
+                </div>
+              </div>
+              <div class="kpi-flip-back">
+                <div class="kpi-back-header">Potential Risk</div>
+                <p class="kpi-back-desc">Without classification, DLP, auto-labeling &amp; security controls cannot activate, leaving the entire tenant unprotected against unintentional disclosure.</p>
+                <div class="kpi-back-source">SharePoint Permission Report</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- KPI 4 — Risk #2 Content Leakage (Critical) -->
+        <div class="kpi-card-wrapper">
+          <div class="kpi-risk-bar" style="background: var(--severity-critical);">
+            <span class="kpi-risk-bar-text">Risk #2 — Content Leakage</span>
+          </div>
+          <div class="kpi-flip-card" data-risk="critical">
+            <div class="kpi-flip-inner">
+              <div class="kpi-flip-front">
+                <div class="kpi-front-header">
+                  <div class="kpi-pulse-row">
+                    <span class="kpi-pulse-dot" style="background: var(--severity-critical);"></span>
+                    <span class="kpi-label">Containers with external sharing</span>
+                  </div>
+                  <span class="kpi-number">④</span>
+                </div>
+                <div class="kpi-value-group">
+                  <div class="kpi-value-row">
+                    <div class="kpi-value">170,253</div>
+                    <span class="kpi-pct">99%</span>
+                  </div>
+                  <div class="kpi-source">of 171,975 containers</div>
+                </div>
+              </div>
+              <div class="kpi-flip-back">
+                <div class="kpi-back-header">Potential Risk</div>
+                <p class="kpi-back-desc">External sharing ON everywhere makes accidental or malicious sharing to outsiders extremely likely. A single wrong share link could expose troves of data.</p>
+                <div class="kpi-back-source">SharePoint Permission Report</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- KPI 5 — Risk #1 Permissions (Critical) -->
+        <div class="kpi-card-wrapper" id="kpi5-wrapper">
+          <div class="kpi-risk-bar" style="background: var(--severity-critical);">
+            <span class="kpi-risk-bar-text">Risk #1 — Permissions</span>
+          </div>
+          <div class="kpi-flip-card" data-risk="critical">
+            <div class="kpi-flip-inner">
+              <div class="kpi-flip-front">
+                <div class="kpi-front-header">
+                  <div class="kpi-pulse-row">
+                    <span class="kpi-pulse-dot" style="background: var(--severity-critical);"></span>
+                    <span class="kpi-label">Public SharePoint sites org-wide accessible</span>
+                  </div>
+                  <span class="kpi-number">⑤</span>
+                </div>
+                <div class="kpi-value-group">
+                  <div class="kpi-value-row">
+                    <div class="kpi-value">2,237</div>
+                    <span class="kpi-pct">1.30%</span>
+                  </div>
+                  <div class="kpi-source">of all containers</div>
+                </div>
+                <!-- Chart toggle icon -->
+                <button class="kpi-chart-toggle" data-chart-target="kpi5-chart-panel" aria-label="Toggle privacy distribution chart" title="View privacy distribution">
+                  <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="3" y="12" width="4" height="9" rx="1"/>
+                    <rect x="10" y="7" width="4" height="14" rx="1"/>
+                    <rect x="17" y="3" width="4" height="18" rx="1"/>
+                  </svg>
+                </button>
+              </div>
+              <div class="kpi-flip-back">
+                <div class="kpi-back-header">Potential Risk</div>
+                <p class="kpi-back-desc">Public Teams expose conversations, files, and channels to the entire company, often unintentionally, increasing misuse and data propagation risk.</p>
+                <div class="kpi-back-source">SharePoint Permission Report</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- KPI 6 — Risk #4 Link Governance (High) -->
+        <div class="kpi-card-wrapper">
+          <div class="kpi-risk-bar" style="background: var(--severity-high);">
+            <span class="kpi-risk-bar-text">Risk #4 — Link Governance</span>
+          </div>
+          <div class="kpi-flip-card" data-risk="high">
+            <div class="kpi-flip-inner">
+              <div class="kpi-flip-front">
+                <div class="kpi-front-header">
+                  <div class="kpi-pulse-row">
+                    <span class="kpi-pulse-dot" style="background: var(--severity-high);"></span>
+                    <span class="kpi-label">Items shared to external users</span>
+                  </div>
+                  <span class="kpi-number">⑥</span>
+                </div>
+                <div class="kpi-value-group">
+                  <div class="kpi-value-row">
+                    <div class="kpi-value">3.27M</div>
+                    <span class="kpi-pct">4.15%</span>
+                  </div>
+                  <div class="kpi-source">of files</div>
+                </div>
+                <!-- Chart toggle icon -->
+                <button class="kpi-chart-toggle" data-chart-target="kpi6-chart-panel" aria-label="Toggle guest permissions chart" title="View guest permissions breakdown">
+                  <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="3" y="12" width="4" height="9" rx="1"/>
+                    <rect x="10" y="7" width="4" height="14" rx="1"/>
+                    <rect x="17" y="3" width="4" height="18" rx="1"/>
+                  </svg>
+                </button>
+              </div>
+              <div class="kpi-flip-back">
+                <div class="kpi-back-header">Potential Risk</div>
+                <p class="kpi-back-desc">Large footprint of external-accessible data exposes corporate content to partners, vendors, agencies, increasing spill risks and dependency on proper guest governance.</p>
+                <div class="kpi-back-source">SharePoint Permission Report</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- KPI 7 — Risk #1 Permissions (Critical) -->
+        <div class="kpi-card-wrapper" id="kpi7-wrapper">
+          <div class="kpi-risk-bar" style="background: var(--severity-critical);">
+            <span class="kpi-risk-bar-text">Risk #1 — Permissions</span>
+          </div>
+          <div class="kpi-flip-card" data-risk="critical">
+            <div class="kpi-flip-inner">
+              <div class="kpi-flip-front">
+                <div class="kpi-front-header">
+                  <div class="kpi-pulse-row">
+                    <span class="kpi-pulse-dot" style="background: var(--severity-critical);"></span>
+                    <span class="kpi-label">Items with broken inheritance</span>
+                  </div>
+                  <span class="kpi-number">⑦</span>
+                </div>
+                <div class="kpi-value-group">
+                  <div class="kpi-value-row">
+                    <div class="kpi-value">1.79M</div>
+                    <span class="kpi-pct">2.28%</span>
+                  </div>
+                  <div class="kpi-source">of files</div>
+                </div>
+                <!-- Chart toggle icon -->
+                <button class="kpi-chart-toggle" data-chart-target="kpi7-chart-panel" aria-label="Toggle broken permissions chart" title="View broken permissions breakdown">
+                  <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="3" y="12" width="4" height="9" rx="1"/>
+                    <rect x="10" y="7" width="4" height="14" rx="1"/>
+                    <rect x="17" y="3" width="4" height="18" rx="1"/>
+                  </svg>
+                </button>
+              </div>
+              <div class="kpi-flip-back">
+                <div class="kpi-back-header">Potential Risk</div>
+                <p class="kpi-back-desc">Fragmented permissions are high-risk and hard to manage; often where oversharing hides and where sensitive files become invisible to IT.</p>
+                <div class="kpi-back-source">SharePoint Permission Report</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- KPI 8 — Risk #5 Stale Content (Medium) -->
+        <div class="kpi-card-wrapper">
+          <div class="kpi-risk-bar" style="background: var(--severity-medium);">
+            <span class="kpi-risk-bar-text">Risk #5 — Stale Content</span>
+          </div>
+          <div class="kpi-flip-card" data-risk="medium">
+            <div class="kpi-flip-inner">
+              <div class="kpi-flip-front">
+                <div class="kpi-front-header">
+                  <div class="kpi-pulse-row">
+                    <span class="kpi-pulse-dot" style="background: var(--severity-medium);"></span>
+                    <span class="kpi-label">Sensitive content in zero-use locations</span>
+                  </div>
+                  <span class="kpi-number">⑧</span>
+                </div>
+                <div class="kpi-value-group">
+                  <div class="kpi-value-row">
+                    <div class="kpi-value">4,774</div>
+                    <span class="kpi-pct">47%</span>
+                  </div>
+                  <div class="kpi-source">of sensitive-bearing containers</div>
+                </div>
+              </div>
+              <div class="kpi-flip-back">
+                <div class="kpi-back-header">Potential Risk</div>
+                <p class="kpi-back-desc">Silent risk: sensitive files that no one uses are often stale, unmaintained, and highly vulnerable to oversharing or misconfigurations. Attackers frequently exploit such forgotten data.</p>
+                <div class="kpi-back-source">DSPM Oversharing Scan</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- KPI 9 — Risk #1 Permissions (Critical) -->
+        <div class="kpi-card-wrapper">
+          <div class="kpi-risk-bar" style="background: var(--severity-critical);">
+            <span class="kpi-risk-bar-text">Risk #1 — Permissions</span>
+          </div>
+          <div class="kpi-flip-card" data-risk="critical">
+            <div class="kpi-flip-inner">
+              <div class="kpi-flip-front">
+                <div class="kpi-front-header">
+                  <div class="kpi-pulse-row">
+                    <span class="kpi-pulse-dot" style="background: var(--severity-critical);"></span>
+                    <span class="kpi-label">Items shared with "Everyone"</span>
+                  </div>
+                  <span class="kpi-number">⑨</span>
+                </div>
+                <div class="kpi-value-group">
+                  <div class="kpi-value-row">
+                    <div class="kpi-value">110</div>
+                    <span class="kpi-pct">0.00014%</span>
+                  </div>
+                  <div class="kpi-source">of files — Critical exposure</div>
+                </div>
+              </div>
+              <div class="kpi-flip-back">
+                <div class="kpi-back-header">Potential Risk</div>
+                <p class="kpi-back-desc">These represent critical exposures — anyone with the link (sometimes even without auth in legacy cases) may access the file. Immediate remediation needed.</p>
+                <div class="kpi-back-source">SharePoint Permission Report</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /KPI grid -->
+
+      <!-- KPI 2 — Chart Modal -->
+      <div class="kpi-chart-modal" id="kpi2-chart-panel" role="dialog" aria-modal="true">
+        <div class="kpi-chart-modal-backdrop"></div>
+        <div class="kpi-chart-modal-content">
+          <button class="kpi-chart-modal-close" aria-label="Close">&times;</button>
+          <div class="kpi-chart-panel-header">
+            <h4 class="kpi-chart-panel-title">Distribution of Sensitive Files Accessed by &gt;X Users</h4>
+            <span class="kpi-chart-panel-subtitle">Logarithmic scale</span>
+          </div>
+          <div class="kpi-chart-panel-body">
+            <div class="kpi2-area-chart-container" id="kpi2-area-chart"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KPI 5 — Chart Modal -->
+      <div class="kpi-chart-modal" id="kpi5-chart-panel" role="dialog" aria-modal="true">
+        <div class="kpi-chart-modal-backdrop"></div>
+        <div class="kpi-chart-modal-content">
+          <button class="kpi-chart-modal-close" aria-label="Close">&times;</button>
+          <div class="kpi-chart-panel-header">
+            <h4 class="kpi-chart-panel-title">Privacy Distribution</h4>
+            <span class="kpi-chart-panel-subtitle">171,975 containers total</span>
+          </div>
+          <div class="kpi-chart-panel-body">
+            <div class="kpi-chart-donut-area">
+              <svg id="kpi5-donut" class="kpi-interactive-donut" viewBox="0 0 200 200"></svg>
+              <div class="kpi-donut-center-label" id="kpi5-donut-center">
+                <span class="kpi-donut-center-value">171,975</span>
+                <span class="kpi-donut-center-desc">Total</span>
+              </div>
+            </div>
+            <div class="kpi-chart-legend" id="kpi5-legend"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KPI 6 — Chart Modal -->
+      <div class="kpi-chart-modal" id="kpi6-chart-panel" role="dialog" aria-modal="true">
+        <div class="kpi-chart-modal-backdrop"></div>
+        <div class="kpi-chart-modal-content">
+          <button class="kpi-chart-modal-close" aria-label="Close">&times;</button>
+          <div class="kpi-chart-panel-header">
+            <h4 class="kpi-chart-panel-title">Guest Users Permissions</h4>
+            <span class="kpi-chart-panel-subtitle">171,975 sites total</span>
+          </div>
+          <div class="kpi-chart-panel-body kpi7-layout">
+            <div class="kpi-chart-donut-area">
+              <svg id="kpi6-donut" class="kpi-interactive-donut" viewBox="0 0 200 200"></svg>
+              <div class="kpi-donut-center-label" id="kpi6-donut-center">
+                <span class="kpi-donut-center-value">171,975</span>
+                <span class="kpi-donut-center-desc">Total Sites</span>
+              </div>
+            </div>
+            <div class="kpi7-table-legend" id="kpi6-legend">
+              <table class="kpi7-data-table">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>Guest users permissions</th>
+                    <th>Sites</th>
+                    <th>% of estate</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KPI 7 — Chart Modal -->
+      <div class="kpi-chart-modal" id="kpi7-chart-panel" role="dialog" aria-modal="true">
+        <div class="kpi-chart-modal-backdrop"></div>
+        <div class="kpi-chart-modal-content">
+          <button class="kpi-chart-modal-close" aria-label="Close">&times;</button>
+          <div class="kpi-chart-panel-header">
+            <h4 class="kpi-chart-panel-title">Broken Permissions Breakdown</h4>
+            <span class="kpi-chart-panel-subtitle">171,975 sites total</span>
+          </div>
+          <div class="kpi-chart-panel-body kpi7-layout">
+            <div class="kpi-chart-donut-area">
+              <svg id="kpi7-donut" class="kpi-interactive-donut" viewBox="0 0 200 200"></svg>
+              <div class="kpi-donut-center-label" id="kpi7-donut-center">
+                <span class="kpi-donut-center-value">171,975</span>
+                <span class="kpi-donut-center-desc">Total Sites</span>
+              </div>
+            </div>
+            <div class="kpi7-table-legend" id="kpi7-legend">
+              <table class="kpi7-data-table">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>Broken permissions</th>
+                    <th>Sites</th>
+                    <th>Avg files</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 3 — RECOMMENDATIONS
+       ============================================================ -->
+  <section id="recommendations" class="recommendations-section relative py-28 overflow-hidden">
+    <div class="max-w-6xl mx-auto px-6">
+
+      <!-- Section header -->
+      <div class="reveal mb-16">
+        <div class="section-accent mb-4"></div>
+        <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+          <div>
+            <h2 class="font-heading text-3xl sm:text-4xl font-bold text-white">
+              Recommendations
+            </h2>
+            <p class="mt-3 text-sm text-white/50 max-w-xl leading-relaxed">
+              Prioritised remediation actions based on the key findings from the assessment.
+            </p>
+          </div>
+          <!-- View toggle + Data actions -->
+          <div style="display:flex; align-items:center; gap:12px; flex-shrink:0;">
+          <div class="view-toggle" id="viewToggle">
+            <button class="view-toggle-btn is-active" data-view="list" aria-label="List view">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              List
+            </button>
+            <button class="view-toggle-btn" data-view="timeline" aria-label="Timeline view">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="4" cy="4" r="1.5" stroke="currentColor" stroke-width="1.2"/><circle cx="4" cy="8" r="1.5" stroke="currentColor" stroke-width="1.2"/><circle cx="4" cy="12" r="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M7 4h7M7 8h7M7 12h7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+              Timeline
+            </button>
+            <button class="view-toggle-btn" data-view="quadrant" aria-label="Priority Matrix view">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="8" y1="1" x2="8" y2="15" stroke="currentColor" stroke-width="1.2"/><line x1="1" y1="8" x2="15" y2="8" stroke="currentColor" stroke-width="1.2"/><circle cx="5" cy="4" r="1.5" fill="currentColor" opacity="0.7"/><circle cx="11" cy="5" r="1.5" fill="currentColor" opacity="0.7"/><circle cx="4" cy="11" r="1.5" fill="currentColor" opacity="0.5"/><circle cx="12" cy="11" r="1.5" fill="currentColor" opacity="0.5"/></svg>
+              Matrix
+            </button>
+          </div>
+          <!-- Data management buttons -->
+          <div class="data-actions">
+            <button class="data-action-btn export-btn" id="exportBtn" aria-label="Export data as JSON">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 2v8M5 7l3 3 3-3M3 12h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              JSON
+            </button>
+            <button class="data-action-btn export-btn" id="exportCsvBtn" aria-label="Export data as CSV">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 2v8M5 7l3 3 3-3M3 12h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              CSV
+            </button>
+            <button class="data-action-btn reset-btn" id="resetBtn" aria-label="Reset all changes">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 8a6 6 0 0 1 10.3-4.2M14 2v4h-4M14 8a6 6 0 0 1-10.3 4.2M2 14v-4h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Reset
+            </button>
+          </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ---- List View: Findings Slider ---- -->
+      <div class="reveal recommendations-view is-active-view" id="listView">
+        <div class="findings-slider" id="findingsSlider">
+          <!-- Left: vertical label + progress -->
+          <div class="findings-sidebar">
+            <span class="findings-vertical-label">Recommendations</span>
+            <div class="findings-progress-track">
+              <div class="findings-progress-fill" id="findingsProgressFill"></div>
+            </div>
+            <span class="findings-counter" id="findingsCounter">01 / 26</span>
+          </div>
+
+          <!-- Center: content -->
+          <div class="findings-content">
+            <div class="findings-slide-container" id="findingsSlideContainer">
+              <!-- Slides are rendered by JS -->
+            </div>
+
+            <!-- Bottom row: source + nav -->
+            <div class="findings-footer">
+              <div class="findings-source" id="findingsSource"></div>
+              <div class="findings-nav">
+                <button class="findings-nav-btn" id="findingsPrev" aria-label="Previous finding">
+                  <svg width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <button class="findings-nav-btn" id="findingsNext" aria-label="Next finding">
+                  <svg width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Oversized number background -->
+          <div class="findings-big-number" id="findingsBigNumber">01</div>
+        </div>
+      </div>
+
+      <!-- ---- Timeline View ---- -->
+      <div class="recommendations-view" id="timelineView">
+        <div class="timeline-group-toggle" id="timelineGroupToggle">
+          <span class="timeline-group-label">Group by</span>
+          <button class="timeline-group-btn is-active" data-group="phase">Phase</button>
+          <button class="timeline-group-btn" data-group="category">Category</button>
+        </div>
+        <div class="timeline-container" id="timelineContainer">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+
+      <!-- ---- Quadrant / Priority Matrix View ---- -->
+      <div class="recommendations-view" id="quadrantView">
+        <div class="quadrant-container" id="quadrantContainer">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="footer-section py-16">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <img src="assets/microsoft-logo.svg" alt="Microsoft" class="h-8 w-auto mx-auto mb-4 opacity-40" />
+      <p class="text-white/25 text-xs tracking-widest uppercase">
+        Confidential — Microsoft &copy; 2026
+      </p>
+    </div>
+  </footer>
+
+  <!-- Lightbox overlay for recommendation images -->
+  <div class="findings-lightbox" id="findingsLightbox">
+    <button class="lightbox-close" aria-label="Close">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <img id="findingsLightboxImg" src="" alt="Recommendation illustration" />
+  </div>
+
+  <!-- Inline findings data (enables file:// usage without a server) -->
+  <script src="data/findings.js"></script>
+  <!-- Scripts -->
+  <script src="js/app.js"></script>
+</body>
+</html>
